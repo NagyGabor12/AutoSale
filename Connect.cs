@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,13 +7,27 @@ using System.Threading.Tasks;
 
 namespace AutoSale
 {
-    Mysql
+    
     public class Connect
     {
-        public string Host;
-        public string Database;
-        public string User;
-        public string Password;
-        public string ConnectionString;
+        public MySqlConnection Connection;
+        private string Host;
+        private string Database;
+        private string User;
+        private string Password;
+        private string ConnectionString;
+
+        public Connect()
+        {
+            Host = "127.0.0.1";
+            Database = "auto";
+            User = "root";
+            Password = "";
+
+            ConnectionString = "SERVER=" + Host + ";DATABASE=" + Database + ";UID=" + User 
+                + ";PASSWORD=" + Password + ";SslMode=None";
+
+            Connection = new MySqlConnection(ConnectionString);
+        }
     }
 }
